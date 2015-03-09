@@ -34,8 +34,9 @@ exports.commands = {
 			.pipe(fs.createWriteStream('config/avatars/' + avFile))
 			.on('close', function () {
 				this.parse('/bash cp config/avatars/' + avFile + ' $OPENSHIFT_DATA_DIR/avatars/' + avFile);
+				Config.customavatars[userid] = avFile;
 			}.bind(this));
-			this.sendReply('"' + userid + '": "' + userid + '.' + ext + '"');
+			this.sendReply('"' + userid + '": "' + avFile + '"');
 		} catch (e) {
 			this.popupReply("Failed download: " + e);
 		}
@@ -61,6 +62,6 @@ exports.commands = {
 		if (!pic) return this.sendReply("User " + target + " does not have a custom avatar.");
 		if (!this.canBroadcast()) return false;
 
-		this.sendReplyBox('<img src="' + Config.serverurl + 'avatars/' + pic + '" alt="' + pic + '" />');
+		this.sendReplyBox('<img src="' + Config.serverurl + 'avatars/' + pic + '" alt="' + pic + '" height=80 width=80 />');
 	}
 };
