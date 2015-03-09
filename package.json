@@ -19,8 +19,12 @@
   "engines": {
     "node": "> 0.10.1"
   },
+<<<<<<< HEAD
   "engineStrict": true,
   "main": "rhc.js",
+=======
+  "main": "app.js",
+>>>>>>> 98981a774e8d9b25e9309c4cccc76a5ecb76cbcb
   "scripts": {
     "start": "node app.js",
     "test": "gulp && mocha"
