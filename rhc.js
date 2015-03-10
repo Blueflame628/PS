@@ -3,18 +3,16 @@ var fs = require('fs'),
 
 global.rhcApp = {
 	running: 0,
-	tasksDone: 0,
+	tasksLeft: 0,
 	done: function () {
-		// total tasks: 1: #78, #79
-		this.tasksDone++;
-		if (this.tasksDone >= 2) return this.runapp();
+		this.tasksLeft--;
+		if (this.tasksLeft <= 0) return this.runapp();
 		return false;
 	},
 	runapp: function () {
 		if (this.running) return false;
 		require('./app.js');
-		this.running = 1;
-		return true;
+		return (this.running = true);
 	},
 	writefilesync: function (from, to) {
 		try {
@@ -76,8 +74,10 @@ rhcApp.writefilesync(ddir + 'chatrooms.json', 'config/chatrooms.json');
 rhcApp.writefilesync(ddir + 'lastbattle.txt', 'logs/lastbattle.txt');
 // rhcApp.writefilesync(ddir + 'config.js', 'config/config.js');
 rhcApp.writefilesync(ddir + 'custom.css', 'config/custom.css');
+
+rhcApp.tasksLeft++;
 rhcApp.downloadfile('http://pastebin.com/raw.php?i=ZDDwTH9p', './config/avatars.json', function () { rhcApp.done(); }); // call done: 1
-rhcApp.downloadfile('http://pastebin.com/raw.php?i=HDmZqYyz', './config/customformats.js', function () { rhcApp.done(); }); // call done: 2
+// rhcApp.downloadfile('http://pastebin.com/raw.php?i=HDmZqYyz', './config/customformats.js', function () { rhcApp.done(); }); // call done: 2
 
 fs.readdirSync(ddir + 'avatars')
 	.forEach(function (pic) {
