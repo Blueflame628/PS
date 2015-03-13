@@ -14,8 +14,12 @@ exports.Formats = [
 		// searchShow: false,
 		debug: true,
 
+		mod: 'regional',
 		team: 'randomSeasonalRegStaff',
-		ruleset: ['HP Percentage Mod', 'Cancel Mod']
+		ruleset: ['HP Percentage Mod', 'Cancel Mod'],
+		onBegin: function () {
+			this.add('message', 'GET READY FOR THE NEXT BATTLE!');
+		}
 	},
 
 	// Tier Testing

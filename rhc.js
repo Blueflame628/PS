@@ -72,17 +72,12 @@ var ddir = process.env['OPENSHIFT_DATA_DIR'];
 rhcApp.writefilesync(ddir + 'usergroups.csv', 'config/usergroups.csv');
 rhcApp.writefilesync(ddir + 'chatrooms.json', 'config/chatrooms.json');
 rhcApp.writefilesync(ddir + 'lastbattle.txt', 'logs/lastbattle.txt');
-// rhcApp.writefilesync(ddir + 'config.js', 'config/config.js');
 rhcApp.writefilesync(ddir + 'custom.css', 'config/custom.css');
 
-rhcApp.tasksLeft++;
-rhcApp.downloadfile('http://pastebin.com/raw.php?i=ZDDwTH9p', './config/avatars.json', function () { rhcApp.done(); }); // call done: 1
-// rhcApp.downloadfile('http://pastebin.com/raw.php?i=HDmZqYyz', './config/customformats.js', function () { rhcApp.done(); }); // call done: 2
-
 fs.readdirSync(ddir + 'avatars')
-	.forEach(function (pic) {
-		rhcApp.writefilesync(ddir + 'avatars/' + pic, './config/avatars/' + pic);
-	});
+.forEach(function (pic) {
+	rhcApp.writefilesync(ddir + 'avatars/' + pic, './config/avatars/' + pic);
+});
 
 rhcApp.setupwatch('config/usergroups.csv', ddir + 'usergroups.csv');
 rhcApp.setupwatch('config/chatrooms.json', ddir + 'chatrooms.json');
