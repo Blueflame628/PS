@@ -5,6 +5,18 @@
 exports.Formats = [
 	// Tier(s) of the Month
 	////////////////////////////////////////////
+	{
+		name: "[Seasonal] Super Regional Staff Bros.",
+		section: "Regional Metagames",
+		column: 2,
+
+		rated: false,
+		// searchShow: false,
+		debug: true,
+
+		team: 'randomSeasonalRegStaff',
+		ruleset: ['HP Percentage Mod', 'Cancel Mod']
+	},
 
 	// Tier Testing
 	///////////////////////////////////////////
