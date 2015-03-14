@@ -6,12 +6,11 @@ exports.Formats = [
 	// Tier(s) of the Month
 	////////////////////////////////////////////
 	{
-		name: "[Seasonal] Super Regional Staff Bros.",
+		name: "Regional Super Staff Bros.",
 		section: "Regional Metagames",
 		column: 2,
 
 		rated: false,
-		// searchShow: false,
 		debug: true,
 
 		mod: 'regional',
