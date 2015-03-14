@@ -72,7 +72,6 @@ var ddir = process.env['OPENSHIFT_DATA_DIR'];
 rhcApp.writefilesync(ddir + 'usergroups.csv', 'config/usergroups.csv');
 rhcApp.writefilesync(ddir + 'chatrooms.json', 'config/chatrooms.json');
 rhcApp.writefilesync(ddir + 'lastbattle.txt', 'logs/lastbattle.txt');
-rhcApp.writefilesync(ddir + 'custom.css', 'config/custom.css');
 
 fs.readdirSync(ddir + 'avatars')
 .forEach(function (pic) {
@@ -82,4 +81,3 @@ fs.readdirSync(ddir + 'avatars')
 rhcApp.setupwatch('config/usergroups.csv', ddir + 'usergroups.csv');
 rhcApp.setupwatch('config/chatrooms.json', ddir + 'chatrooms.json');
 rhcApp.setupwatch('logs/lastbattle.txt', ddir + 'lastbattle.txt');
-rhcApp.setupwatch(ddir + 'custom.css', 'config/custom.css');

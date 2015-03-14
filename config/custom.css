@@ -1,0 +1,88 @@
+#header{background:url("")}
+
+body
+{
+	background-image: url("http://imgur.com/4g0IMt3.png");
+	background-repeat:no-repeat;
+	background-position:center
+}
+
+.chat-log
+{
+	font-size:10pt;
+	background: url("") no-repeat scroll center;
+	background:#a5ffa5;
+	color:#000;
+	overflow:auto;
+}
+
+.userlist
+{
+	border-left: 1px solid #c8e3e0;
+	background: #7FFFD4;
+}
+
+.menugroup .button
+{
+    background:#000000  none repeat scroll 0 0;
+    opacity:.9;
+}
+
+.message-announce
+{
+    background: #00000;
+}
+
+.icon-user
+{
+    color: #00000 !important;
+}
+
+.broadcast-blue
+{
+    background: #8FA6B3;
+    color: #000;
+    border: 2px solid #000;
+    padding: 5px;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    font-size: 10pt;
+}
+
+.sunnydayweather
+{
+	background: #FFEEBB url(//play.pokemonshowdown.com/fx/weather-sunnyday.jpg) no-repeat scroll left top;
+	color: #664411;
+	text-shadow: #FFFFFF 1px 1px 0, #FFFFFF 1px -1px 0, #FFFFFF -1px 1px 0, #FFFFFF -1px -1px 0;
+}
+.rainweather,
+.raindanceweather
+{
+	background: #99BBFF url(//play.pokemonshowdown.com/fx/weather-raindance.jpg) no-repeat scroll left top;
+	color: #0044BB;
+	text-shadow: #FFFFFF 1px 1px 0, #FFFFFF 1px -1px 0, #FFFFFF -1px 1px 0, #FFFFFF -1px -1px 0;
+}
+.sandstormweather
+{
+	background: #E6E0AC url(//play.pokemonshowdown.com/fx/weather-sandstorm.png) no-repeat scroll left top;
+	color: #554433;
+	text-shadow: #FFFFFF 1px 1px 0, #FFFFFF 1px -1px 0, #FFFFFF -1px 1px 0, #FFFFFF -1px -1px 0;
+}
+.hailweather
+{
+	background: #AADDEE url(//play.pokemonshowdown.com/fx/weather-hail.png) no-repeat scroll left top;
+	color: #114455;
+	text-shadow: #FFFFFF 1px 1px 0, #FFFFFF 1px -1px 0, #FFFFFF -1px 1px 0, #FFFFFF -1px -1px 0;
+}
+.acidrainweather,
+.contaminateweather
+{
+	background:  #a64ca6 url(//http://i44.tinypic.com/2w71ziv.jpg) no-repeat scroll left top;
+	color: #400040;
+	text-shadow: #FFFFFF 1px 1px 0, #FFFFFF 1px -1px 0, #FFFFFF -1px 1px 0, #FFFFFF -1px -1px 0;
+}
+.pseudoweather
+{
+	background: #DDAAEE url(//play.pokemonshowdown.com/fx/weather-trickroom.png) no-repeat scroll left top;
+	color: #661155;
+	text-shadow: #FFFFFF 1px 1px 0, #FFFFFF 1px -1px 0, #FFFFFF -1px 1px 0, #FFFFFF -1px -1px 0;
+}
