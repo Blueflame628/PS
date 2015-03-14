@@ -26,7 +26,8 @@ exports.commands = {
 			'gif': 'gif',
 			'png': 'png'
 		};
-		if (!exts[ext]) return this.sendReply("Invalid extension: valid ones are jpg, png, gif");
+		ext = exts[ext];
+		if (!ext) return this.sendReply("Invalid extension: valid ones are jpg, png, gif");
 
 		var avFile = userid + '.' + ext;
 		try {
@@ -57,11 +58,23 @@ exports.commands = {
 		}.bind(this);
 		rhcApp.downloadfile('http://pastebin.com/raw.php?i=HDmZqYyz', './config/customformats.js', callback);
 	},
-	showavatar: function (target, room, user) {
-		var userid = toId(target), pic = Config.customavatars[userid];
-		if (!pic) return this.sendReply("User " + target + " does not have a custom avatar.");
-		if (!this.canBroadcast()) return false;
+	roomlist: function () {
+		if (!this.can('hotpatch')) return false;
 
-		this.sendReplyBox('<img src="' + Config.serverurl + 'avatars/' + pic + '" alt="' + pic + '" height=80 width=80 />');
+		var rooms = Object.keys(Rooms.rooms),
+			len = rooms.length,
+			official = ['<b><font color="#1a5e00" size="2">Official rooms</font></b><br><br>'],
+			nonOfficial = ['<hr><b><font color="#000b5e" size="2">Chat rooms</font></b><br><br>'],
+			privateRoom = ['<hr><b><font color="#5e0019" size="2">Private rooms</font></b><br><br>'];
+		while (len--) {
+			var currRoom = Rooms.rooms[rooms[(rooms.length - len) - 1]];
+			var button = '<button name = "send" value = "/join ' + currRoom.id + '">' + currRoom.title + '</button>';
+			if (currRoom.type === 'chat') {
+				if (currRoom.isOfficial) official.push(button);
+				else if (currRoom.isPrivate)  privateRoom.push(button);
+				else nonOfficial.push(button);
+			}
+		}
+		this.sendReplyBox([].concat(official).concat(nonOfficial).concat(privateRoom).join('  '));
 	}
 };
