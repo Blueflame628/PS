@@ -2,8 +2,8 @@ var fs = require('fs'),
     http = require('http');
 
 global.rhcApp = {
-	running: 0,
-	tasksLeft: 0,
+	running: false,
+	tasksLeft: 1,
 	done: function () {
 		this.tasksLeft--;
 		if (this.tasksLeft <= 0) return this.runapp();
@@ -12,7 +12,8 @@ global.rhcApp = {
 	runapp: function () {
 		if (this.running) return false;
 		require('./app.js');
-		return (this.running = true);
+		this.running = true;
+		return true;
 	},
 	writefilesync: function (from, to) {
 		try {
@@ -81,3 +82,5 @@ fs.readdirSync(ddir + 'avatars')
 rhcApp.setupwatch('config/usergroups.csv', ddir + 'usergroups.csv');
 rhcApp.setupwatch('config/chatrooms.json', ddir + 'chatrooms.json');
 rhcApp.setupwatch('logs/lastbattle.txt', ddir + 'lastbattle.txt');
+
+rhcApp.done();
