@@ -46,6 +46,13 @@ exports.Formats = [
 		]
 	},
 	{
+		name: "UU (no Scald)",
+		section: "ORAS Singles",
+
+		ruleset: ['UU'],
+		banlist: ['Scald']
+	},
+	{
 		name: "RU",
 		section: "ORAS Singles",
 
@@ -3259,7 +3266,7 @@ exports.Formats = [
 		section: "Other Metagames",
 
 		ruleset: ['Pokemon', 'Ability Clause', '-ate Clause', 'OHKO Clause', 'Evasion Moves Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
-		banlist: ['Arena Trap', 'Huge Power', 'Parental Bond', 'Pure Power', 'Shadow Tag', 'Wonder Guard', 'Assist']
+		banlist: ['Arena Trap', 'Huge Power', 'Parental Bond', 'Pure Power', 'Shadow Tag', 'Wonder Guard', 'Assist', 'Chatter']
 	},
 	{
 		name: "1v1",
