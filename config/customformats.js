@@ -70,6 +70,26 @@ exports.Formats = [
 				this.add('c', '+Kuro Hebi12', 'Just gonna say one thing, don\'t be a noob');
 			}
 		},
+		onSwitchOut: function (pokemon) {
+			var name = toId(pokemon.name);
+
+			if (name === 'codelegend') {
+				this.add('c', '~codelegend - \u24b6\u24e6\u24d0\u24e8', 'will return with more hax.');
+			}
+		},
+		onModifyPokemon: function (pokemon) {
+			var name = toId(pokemon.name);
+			// Enforce choice item locking on custom moves.
+			var moves = pokemon.moveset;
+			if (pokemon.getItem().isChoice && pokemon.lastMove === moves[3].id) {
+				for (var i = 0; i < 3; i++) {
+					if (!moves[i].disabled) {
+						pokemon.disableMove(moves[i].id, false);
+						moves[i].disabled = true;
+					}
+				}
+			}
+		},
 		onFaint: function (pokemon) {
 			var name = toId(pokemon.name);
 
