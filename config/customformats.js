@@ -54,6 +54,9 @@ exports.Formats = [
 			if (name === 'bdh93') {
 				this.add('c', '&BDH93', 'Time for some Trolling');
 			}
+			if (name === 'blueflame628') {
+				this.add('c', '@Blueflame628', 'I will scorch you with 628 blue flames!!! ...I\'m really bad at this.');
+			}
 			if (name === 'almightybronzong') {
 				this.add('c', '@AlmightyBronzong', '``All hail.``');
 			}
@@ -62,6 +65,9 @@ exports.Formats = [
 			}
 			if (name === 'umichbrendan') {
 				this.add('c', '+UmichBrendan', 'BREAKING NEWS: YOU\'RE ABOUT TO LOSE!');
+			}
+			if (name === 'kurohebi12') {
+				this.add('c', '+Kuro Hebi12', 'Just gonna say one thing, don\'t be a noob');
 			}
 		}
 	},
