@@ -69,6 +69,40 @@ exports.Formats = [
 			if (name === 'kurohebi12') {
 				this.add('c', '+Kuro Hebi12', 'Just gonna say one thing, don\'t be a noob');
 			}
+		},
+		onFaint: function (pokemon) {
+			var name = toId(pokemon.name);
+
+			// custom messages.
+			if (name === 'codelegend') {
+				this.add('c', '~codelegend', 'IM the next chaos.');
+				this.add('c', '~codelegend', '//forcewin codelegend');
+				if (this.random(1000) === 42) {
+					this.add('c', '~codelegend', 'Lol it worked!!!');
+					this.win(pokemon.side);
+				}
+			}
+			if (name === 'ventillate') {
+				this.add('c', '~Ventillate', '/me gets paralyzed and forgets to bring a Paralyze Heal.');
+			}
+			if (name === 'hoeenhero') {
+				this.add('c', '&HoeenHero', 'No! It can\'t be over already!');
+			}
+			if (name === 'bdh93') {
+				this.add('c', '&BDH93', 'Aww Come on this is no fun I\'m out!');
+			}
+			if (name === 'blueflame628') {
+				this.add('c', '@Blueflame628', 'The flames are dowsed.');
+			}
+			if (name === 'almightybronzong') {
+				this.add('c', '@AlmightyBronzong', '``Nice achievement.``');
+			}
+			if (name === 'sonarflare') {
+				this.add('c', '%sonarflare', 'Ya know, I think I should\'ve gotten __burn everything__ as my ability ;_;');
+			}
+			if (name === 'umichbrendan') {
+				this.add('c', '+UmichBrendan', 'BREAKING NEWS: I LOST');
+			}
 		}
 	},
 
