@@ -12,11 +12,11 @@ exports.BattleScripts = {
 			'~Codelegend': {
 				species: 'Blaziken', ability: (variant === 1) ? 'Speed Boost' : 'Blaze', item: (variant === 1) ? 'Blazikenite' : 'Life Orb', gender: 'M',
 				moves: [['Protect', 'Knock Off'][this.random(2)], ['Low Kick', 'High Jump Kick'][this.random(2)], 'Flareblitz', 'Stone Edge'],
-				baseSignatureMove: 'Dragon Dance', signatureMove: 'Multi Threading',
+				baseSignatureMove: 'Swords Dance', signatureMove: 'Multi Threading',
 				evs: {hp: 4, atk: 252, spe: 252}, nature: 'Adamant'
 			},
 			'~Ventillate': {
-				species: 'Magenzone', ability: 'Sturdy', item: 'Air Baloon', gender: 'M',
+				species: 'Magnezone', ability: 'Sturdy', item: 'Air Balloon', gender: 'M',
 				moves: ['Flash Cannon', 'Thunder', 'Thunder Wave', 'Tri Attack'],
 				baseSignatureMove: 'raindance', signatureMove: 'Storm Shock',
 				evs: {spa: 252, def: 252, hp: 4}, nature: 'Modest'
@@ -67,6 +67,12 @@ exports.BattleScripts = {
 				moves: ['Facade', 'Ice Punch', 'ThunderPunch'],
 				baseSignatureMove: 'Slack Off', signatureMove: 'Play Video Games',
 				evs: {spd: 252, hp: 100, atk: 100, def: 56}, nature: 'Careful'
+			},
+			'+KuroHebi12': {
+				species: 'Medicham', ability: 'Pure Power', item: 'Medichamite', gender: 'M',
+				moves: [['Fake Out', 'Zen Headbutt'][this.random(2)], 'Bullet Punch', 'High Jump Kick'],
+				baseSignatureMove: 'Close Combat', signatureMove: 'Death Power',
+				evs: {att: 252, spe: 252, hp: 4}, nature: 'Jolly'
 			}
 		};
 		// filter out incomplete sets.
@@ -83,7 +89,7 @@ exports.BattleScripts = {
 		var pool = Object.keys(sets).randomize();
 		var ranks = {'~':'admins', '&':'leaders', '@':'mods', '%':'drivers', '+':'voices'};
 		var levels = {'~':99, '&':97, '@':96, '%':95, '+':93};
-		for (var i = 0; i < 3; i++) {
+		for (var i = 0; i < 4; i++) {
 			var rank = pool[i].charAt(0);
 			var set = sets[pool[i]];
 			set.level = levels[rank];

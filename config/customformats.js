@@ -18,8 +18,56 @@ exports.Formats = [
 		ruleset: ['HP Percentage Mod', 'Cancel Mod'],
 		onBegin: function () {
 			this.add('message', 'GET READY FOR THE NEXT BATTLE!');
+			this.add('message', 'Limit: 4 Pokemon. We don\'t have many entries...');
+			this.add('c', '~codelegend', 'The custom messages have not yet been added.');
+		},
+		onModifyMove: function (move, pokemon) {
+			// This is to make signature moves work when transformed.
+			if (move.id === 'transform') {
+				move.onHit = function (target, pokemon) {
+					if (!pokemon.transformInto(target, pokemon)) return false;
+					pokemon.originalName = pokemon.name;
+					pokemon.name = target.name;
+				};
+			}
+			move.effectType = 'Move';
+			var name = toId(pokemon.illusion && move.sourceEffect === 'allyswitch' ? pokemon.illusion.name : pokemon.name);
+		},
+		onSwitchIn: function (pokemon) {
+			var name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
+
+			// stat boosts.
+			if (name === 'codelegend' && !pokemon.illusion) {
+				this.boost({atk: 2}, pokemon, pokemon, 'swords hax');
+			}
+
+			// custom messages.
+			if (name === 'codelegend') {
+				this.add('c', '~codelegend', 'Pokemon battles = javascript code injection.');
+			}
+			if (name === 'ventillate') {
+				this.add('c', '~Ventillate', '50 Shades of SHOCK coming towards your way!');
+			}
+			if (name === 'hoeenhero') {
+				this.add('c', '&HoeenHero', 'Dance to the beat of the music!');
+			}
+			if (name === 'bdh93') {
+				this.add('c', '&BDH93', 'Time for some Trolling');
+			}
+			if (name === 'almightybronzong') {
+				this.add('c', '@AlmightyBronzong', '``All hail.``');
+			}
+			if (name === 'sonarflare') {
+				this.add('c', '%sonarflare', 'The lord of sound and fire is here');
+			}
+			if (name === 'umichbrendan') {
+				this.add('c', '+UmichBrendan', 'BREAKING NEWS: YOU\'RE ABOUT TO LOSE!');
+			}
 		}
 	},
+
+	// Suspect Tests.
+	///////////////////////////////////////////
 
 	// Tier Testing
 	///////////////////////////////////////////
@@ -69,6 +117,7 @@ exports.Formats = [
 		searchShow: false,
 		debug: true,
 
+		mod: 'regional',
 		ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause', 'Mega Ban Mod'],
 		banlist: ['Uber', 'Blaziken + Speed Boost', 'Greninja + Protean'],
 
@@ -119,8 +168,4 @@ exports.Formats = [
 			if (aboveNUPokes > 3) return ["You cannot have more than three pokemon above NU."];
 		}
 	}
-
-	// Old
-	///////////////////////////////////////////
-
 ];
