@@ -30,6 +30,20 @@ exports.Formats = [
 		banlist: ['Uber', 'Soul Dew', 'Gengarite', 'Kangaskhanite', 'Lucarionite', 'Mawilite', 'Salamencite']
 	},
 	{
+		name: "OU (no Mega)",
+		section: "ORAS Singles",
+
+		ruleset: ['OU'],
+		onBegin: function () {
+			for (var i = 0; i < this.p1.pokemon.length; i++) {
+				this.p1.pokemon[i].canMegaEvo = false;
+			}
+			for (var i = 0; i < this.p2.pokemon.length; i++) {
+				this.p2.pokemon[i].canMegaEvo = false;
+			}
+		}
+	},
+	{
 		name: "Ubers",
 		section: "ORAS Singles",
 
@@ -1825,7 +1839,7 @@ exports.Formats = [
 			}
 			if (move.id === 'vcreate' && name === 'v4') {
 				move.name = 'V-Generate';
-				move.self.boosts = {accuracy: -2};
+				move.self = {boosts: {accuracy: -2}};
 				move.accuracy = 85;
 				move.secondaries = [{chance: 50, status: 'brn'}];
 			}
