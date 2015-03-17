@@ -60,6 +60,9 @@ exports.Formats = [
 			if (name === 'almightybronzong') {
 				this.add('c', '@AlmightyBronzong', '``All hail.``');
 			}
+			if (name === 'hydrostatics') {
+				this.add('c', '@Hydrostatics', 'Let the power of physics defeat you!');
+			}
 			if (name === 'sonarflare') {
 				this.add('c', '%sonarflare', 'The lord of sound and fire is here');
 			}
@@ -116,6 +119,9 @@ exports.Formats = [
 			}
 			if (name === 'almightybronzong') {
 				this.add('c', '@AlmightyBronzong', '``Nice achievement.``');
+			}
+			if (name === 'hydrostatics') {
+				this.add('c', '@Hydrostatics', '/me eats his Physics textbook.');
 			}
 			if (name === 'sonarflare') {
 				this.add('c', '%sonarflare', 'Ya know, I think I should\'ve gotten __burn everything__ as my ability ;_;');
