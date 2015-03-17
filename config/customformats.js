@@ -63,6 +63,9 @@ exports.Formats = [
 			if (name === 'hydrostatics') {
 				this.add('c', '@Hydrostatics', 'Let the power of physics defeat you!');
 			}
+			if (name === 'opple') {
+				this.add('c', '@Opple', 'lol hi');
+			}
 			if (name === 'sonarflare') {
 				this.add('c', '%sonarflare', 'The lord of sound and fire is here');
 			}
@@ -122,6 +125,9 @@ exports.Formats = [
 			}
 			if (name === 'hydrostatics') {
 				this.add('c', '@Hydrostatics', '/me eats his Physics textbook.');
+			}
+			if (name === 'opple') {
+				this.add('c', '@Opple', 'I call hacks, fine. You got me, lol, I\'ll get you next time!');
 			}
 			if (name === 'sonarflare') {
 				this.add('c', '%sonarflare', 'Ya know, I think I should\'ve gotten __burn everything__ as my ability ;_;');
