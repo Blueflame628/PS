@@ -70,7 +70,7 @@ exports.Formats = [
 				this.add('c', '+UmichBrendan', 'BREAKING NEWS: YOU\'RE ABOUT TO LOSE!');
 			}
 			if (name === 'kurohebi12') {
-				this.add('c', '+Kuro Hebi12', 'Just gonna say one thing, don\'t be a noob');
+				this.add('c', '+KuroHebi12', 'Just gonna say one thing, don\'t be a noob');
 			}
 		},
 		onSwitchOut: function (pokemon) {
@@ -128,6 +128,9 @@ exports.Formats = [
 			}
 			if (name === 'umichbrendan') {
 				this.add('c', '+UmichBrendan', 'BREAKING NEWS: I LOST');
+			}
+			if (name === 'kurohebi12') {
+				this.add('c', '+KuroHebi12', 'Ur still a noob.');
 			}
 		}
 	},
