@@ -54,6 +54,12 @@ exports.BattleScripts = {
 				baseSignatureMove: 'Nasty Plot', signatureMove: 'IQ Boost',
 				evs: {spa: 252, spe: 252, hp: 4}, nature: 'Modest'
 			},
+			'@Opple': {
+				species: 'Dragonite', ability: 'Multiscale', item: 'Weakness Policy', gender: 'M',
+				moves: ['Dragon Dance', 'Fire Punch', 'Dragon Claw', 'Waterfall'],
+				baseSignatureMove: 'Defense Curl', signatureMove: 'Ancient Orb',
+				evs: {att: 252, spe: 252, hp: 4}, nature: 'Adamant'
+			},
 			// Drivers:
 			'%Mimiroppu': {
 				species: 'Lopunny', ability: 'Limber', item: 'Lopunnite', gender: (variant === 1) ? 'M' : 'F',
@@ -69,8 +75,8 @@ exports.BattleScripts = {
 			},
 			// Voices:
 			'+UmichBrendan': {
-				species: 'Slaking', ability: 'Synchronize', item: 'Toxic Orb', gender: 'M',
-				moves: ['Facade', 'Ice Punch', 'ThunderPunch'],
+				species: 'Slaking', ability: 'Guts', item: 'Flame Orb', gender: 'M',
+				moves: ['Facade', 'Brick Break', 'ThunderPunch'],
 				baseSignatureMove: 'Slack Off', signatureMove: 'Play Video Games',
 				evs: {spd: 252, hp: 100, atk: 100, def: 56}, nature: 'Careful'
 			},
