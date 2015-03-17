@@ -48,6 +48,12 @@ exports.BattleScripts = {
 				baseSignatureMove: 'Iron Defense', signatureMove: 'Blast Furnace',
 				evs: {hp: 252, def: 168, spd: 88}, nature: 'Sassy'
 			},
+			'@Hydrostatics': {
+				species: 'Alakazam', ability: 'Syncronize', item: 'Focus Sash', gender: 'M',
+				moves: ['Calm Mind', 'Dazzling Gleam', 'Psychic', 'Hidden Power'],
+				baseSignatureMove: 'Nasty Plot', signatureMove: 'IQ Boost',
+				evs: {spa: 252, spe: 252, hp: 4}, nature: 'Modest'
+			},
 			// Drivers:
 			'%Mimiroppu': {
 				species: 'Lopunny', ability: 'Limber', item: 'Lopunnite', gender: (variant === 1) ? 'M' : 'F',
