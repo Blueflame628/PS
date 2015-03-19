@@ -278,14 +278,15 @@ exports.Formats = [
 
 		maxLevel: 5,
 		ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Little Cup'],
-		banlist: [
-			'LC Uber', 'LC UU', 'Gligar', 'Misdreavus', 'Scyther', 'Sneasel', 'Tangela', 'Aipom', 'Amaura', 'Archen', 'Anorith', 'Aron',
-			'Blitzle', 'Bunnelby', 'Cacnea', 'Carvanha', 'Charmander', 'Chimchar', 'Chikorita', 'Clauncher', 'Corphish', 'Cranidos',
-			'Croagunk', 'Cubchoo', 'Cubone', 'Cyndaquil', 'Darumaka', 'Deerling', 'Doduo', 'Deino', 'Onix', 'Nosepass', 'Noibat',
-			'Minccino', 'Mienfoo', 'Pancham', 'Pumpkaboo', 'Riolu', 'Scraggy', 'Shellder', 'Shieldon', 'Snover', 'Snubbull', 'Swinub',
-			'Tyrunt', 'Woobat', 'Ponyta', 'Magnemite', 'Machop', 'Voltorb', 'Trapinch', 'Rhyhorn', 'Hippopotas', 'Growlithe', 'Grimer',
-			'Houndour', 'Honedge', 'Froakie', 'Dwebble', 'Drilbur', 'Sonic Boom', 'Swagger', 'Abra', 'Gastly', 'Eviolite', 'Dragon Claw'
-		]
+		banlist: ['LC Uber', 'LC UU', 'Sonic Boom', 'Swagger', 'Eviolite', 'Dragon Claw'],
+		validateSet: function (set) {
+			const allowedPokes = ['Sunkern', 'Azurill', 'Kriketot', 'Wurmple', 'Weedle', 'Caterpie', 'Ralts', 'Scatterbug', 'Magikarp',
+				'Feebas', 'Silcoon', 'Pichu', 'Metapod', 'Kakuna', 'Cascoon', 'Wooper', 'Tyrouge', 'Igglybuff', 'Spewpa', 'Sentret',
+				'Cleffa', 'Seedot', 'Poochyena', 'Lotad', 'Happiny', 'Burmy', 'Makuhita', 'Zizagoon', 'Whismur', 'Combee', 'Zubat',
+				'Togepi', 'Starly', 'Swinub', 'Spinarak', 'Slugma'
+			];
+			if (allowedPokes.indexOf(set.species) === -1) return [set.species + " is not allowed for 1% tier."];
+		}
 	},
 	{
 		name: "Heavymons",
