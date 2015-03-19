@@ -231,6 +231,39 @@ exports.Formats = [
 
 	// Suspect Tests.
 	///////////////////////////////////////////
+	{
+		name: "Startermons (suspect test)",
+		section: "Regional Metagames (test)",
+		debug: true,
+
+		mod: 'regional',
+		ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause', 'Mega Ban Mod'],
+		banlist: ['Uber', 'Blaziken + Speed Boost', 'Greninja + Protean'],
+
+		validateSet: function (set) {
+			const allowedPokes = [
+				'Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise',
+				'Cyndaquil', 'Quilava', 'Typhlosion', 'Totodile', 'Croconaw', 'Feraligatr', 'Chikorita', 'Bayleef', 'Meganium',
+				'Torchic', 'Combusken', 'Blaziken', 'Mudkip', 'Marshtomp', 'Swampert', 'Treecko', 'Grovyle', 'Sceptile',
+				'Chimchar', 'Monferno', 'Infernape', 'Piplup', 'Prinplup', 'Empoleon', 'Turtwig', 'Grotle', 'Torterra',
+				'Tepig', 'Pignite', 'Emboar', 'Oshawott', 'Dewott', 'Samurott', 'Snivy', 'Servine', 'Serperior',
+				'Fennekin', 'Braxien', 'Delphox', 'Froakie', 'Frogadier', 'Greninja', 'Chespin', 'Quilladin', 'Chesnaught',
+				'Pikachu', 'Raichu', 'Eevee', 'Flareon', 'Jolteon', 'Vaporeon', 'Umbreon', 'Espeon'
+			];
+
+			if (allowedPokes.indexOf(set.species) === -1) return [set.species + " is not a valid starter pokemon. (note: Megas are not allowed)."];
+		},
+		validateTeam: function (team) {
+			if (team.length < 3) return ["You must have atleast three pokemon."];
+		},
+		onBegin: function () {
+			this.debug('Cutting down to 3');
+			this.p1.pokemon = this.p1.pokemon.slice(0, 3);
+			this.p1.pokemonLeft = this.p1.pokemon.length;
+			this.p2.pokemon = this.p2.pokemon.slice(0, 3);
+			this.p2.pokemonLeft = this.p2.pokemon.length;
+		}
+	},
 
 	// Tier Testing
 	///////////////////////////////////////////
@@ -270,42 +303,6 @@ exports.Formats = [
 			if (template.weightkg < gogoat.weightkg) {
 				return [template.name + ' is not heavier than gogoat, and is not allowed in Heavymons.'];
 			}
-		}
-	},
-	{
-		name: "Startermons",
-		section: "Regional Metagames (test)",
-
-		rated: false,
-		searchShow: false,
-		debug: true,
-
-		mod: 'regional',
-		ruleset: ['Pokemon', 'Standard', 'Team Preview', 'Swagger Clause', 'Baton Pass Clause', 'Mega Ban Mod'],
-		banlist: ['Uber', 'Blaziken + Speed Boost', 'Greninja + Protean'],
-
-		validateSet: function (set) {
-			const allowedPokes = [
-				'Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', 'Squirtle', 'Wartortle', 'Blastoise',
-				'Cyndaquil', 'Quilava', 'Typhlosion', 'Totodile', 'Croconaw', 'Feraligatr', 'Chikorita', 'Bayleef', 'Meganium',
-				'Torchic', 'Combusken', 'Blaziken', 'Mudkip', 'Marshtomp', 'Swampert', 'Treecko', 'Grovyle', 'Sceptile',
-				'Chimchar', 'Monferno', 'Infernape', 'Piplup', 'Prinplup', 'Empoleon', 'Turtwig', 'Grotle', 'Torterra',
-				'Tepig', 'Pignite', 'Emboar', 'Oshawott', 'Dewott', 'Samurott', 'Snivy', 'Servine', 'Serperior',
-				'Fennekin', 'Braxien', 'Delphox', 'Froakie', 'Frogadier', 'Greninja', 'Chespin', 'Quilladin', 'Chesnaught',
-				'Pikachu', 'Raichu', 'Eevee', 'Flareon', 'Jolteon', 'Vaporeon', 'Umbreon', 'Espeon'
-			];
-
-			if (allowedPokes.indexOf(set.species) === -1) return [set.species + " is not a valid starter pokemon. (note: Megas are not allowed)."];
-		},
-		validateTeam: function (team) {
-			if (team.length < 3) return ["You must have atleast three pokemon."];
-		},
-		onBegin: function () {
-			this.debug('Cutting down to 3');
-			this.p1.pokemon = this.p1.pokemon.slice(0, 3);
-			this.p1.pokemonLeft = this.p1.pokemon.length;
-			this.p2.pokemon = this.p2.pokemon.slice(0, 3);
-			this.p2.pokemonLeft = this.p2.pokemon.length;
 		}
 	},
 	{
