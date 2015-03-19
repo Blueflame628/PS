@@ -194,6 +194,15 @@ exports.Formats = [
 					this.add('-sethp', pokemon, pokemon.getHealth, '[from] move: Blast Furnace');
 				};
 			}
+			if (move.id === 'defensecurl' && name === 'opple') {
+				move.name = 'Ancient Orb';
+				move.boosts.def = 2;
+				move.boosts.spd = 2;
+				move.heal = [30, 100];
+			}
+			if (move.id === 'nastyplot' && name === 'hydrostatics') {
+				move.name = 'IQ Boost';
+			}
 			if (move.id === 'attract' && name === 'mimiroppu') {
 				move.name = 'Charm Up';
 				move.self = {boosts: {atk: 2}};
