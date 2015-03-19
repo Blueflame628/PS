@@ -19,19 +19,17 @@ exports.Formats = [
 		onBegin: function () {
 			this.add('message', 'GET READY FOR THE NEXT BATTLE!');
 			this.add('message', 'Limit: 4 Pokemon. We don\'t have many entries...');
-			this.add('c', '~codelegend', 'The custom messages have not yet been added.');
-		},
-		onModifyMove: function (move, pokemon) {
-			// This is to make signature moves work when transformed.
-			if (move.id === 'transform') {
-				move.onHit = function (target, pokemon) {
-					if (!pokemon.transformInto(target, pokemon)) return false;
-					pokemon.originalName = pokemon.name;
-					pokemon.name = target.name;
-				};
+
+			var allPokemon = this.p1.pokemon.concat(this.p2.pokemon);
+			for (var i = 0, len = allPokemon.length; i < len; i++) {
+				var pokemon = allPokemon[i];
+				var last = pokemon.moves.length - 1;
+				if (pokemon.moves[last]) {
+					pokemon.moves[last] = toId(pokemon.set.signatureMove);
+					pokemon.moveset[last].move = pokemon.set.signatureMove;
+					pokemon.baseMoveset[last].move = pokemon.set.signatureMove;
+				}
 			}
-			move.effectType = 'Move';
-			var name = toId(pokemon.illusion && move.sourceEffect === 'allyswitch' ? pokemon.illusion.name : pokemon.name);
 		},
 		onSwitchIn: function (pokemon) {
 			var name = toId(pokemon.illusion ? pokemon.illusion.name : pokemon.name);
@@ -131,6 +129,87 @@ exports.Formats = [
 			}
 			if (name === 'kurohebi12') {
 				this.add('c', '+KuroHebi12', 'Ur still a noob.');
+			}
+		},
+		onModifyMove: function (move, pokemon) {
+			// This is to make signature moves work when transformed.
+			if (move.id === 'transform') {
+				move.onHit = function (target, pokemon) {
+					if (!pokemon.transformInto(target, pokemon)) return false;
+					pokemon.originalName = pokemon.name;
+					pokemon.name = target.name;
+				};
+			}
+
+			var name = toId(pokemon.illusion && move.sourceEffect === 'allyswitch' ? pokemon.illusion.name : pokemon.name);
+			move.effectType = 'Move';
+
+			if (move.id === 'swordsdance' && name === 'codelegend') {
+				move.name = 'MultiThreading';
+				move.boosts = {atk: 2, spd: 1, accuracy: 1};
+				move.pp = 5;
+				move.type = 'fire';
+			}
+			if (move.id === 'raindance' && name === 'ventillate') {
+				move.name = 'Storm Shock';
+				move.self = {boosts: {spe: 2, spa: 2}};
+				move.heal = [35, 100];
+			}
+			if (move.id === 'teeterdance' && name === 'hoeenhero') {
+				move.name = 'Rhythym Dance';
+				move.self = {boosts: {spe: 1, spa: 2}};
+				move.weather = 'RainDance';
+			}
+			if (move.id === 'headbutt' && name === 'bdh93') {
+				move.name = 'Getting Trolled';
+				move.secondaries = [
+					{chance: 30, status: 'par'},
+					{chance: 30, volatileStatus: 'flinch'},
+					{chance: 30, volatileStatus: 'confusion'}
+				];
+			}
+			if (move.id === 'painsplit' && name === 'blueflame628') {
+				move.name = 'Sharing his non-existant Life!';
+				move.onHit = function (target, pokemon) {
+					var averagehp = Math.floor((target.hp + pokemon.hp) / 2) || 1;
+					target.sethp(averagehp * 0.8);
+					pokemon.sethp(averagehp * 1.2);
+					this.add('-sethp', target, target.getHealth, pokemon, pokemon.getHealth, '[from] move: Sharing his non-existant life!');
+				};
+			}
+
+			if (move.id === 'irondefense' && name === 'almightybronzong') {
+				move.name = 'Blast Furnace';
+				move.boosts = {def: 3, spd: 2};
+				move.onHit = function (target, pokemon) {
+					pokemon.cureStatus();
+					for (var i in pokemon.volatiles) delete pokemon.volatiles[i];
+					pokemon.sethp(pokemon.hp + pokemon.maxhp * 0.8);
+					this.add('-sethp', pokemon, pokemon.getHealth, '[from] move: Blast Furnace');
+				};
+			}
+			if (move.id === 'attract' && name === 'mimiroppu') {
+				move.name = 'Charm Up';
+				move.self = {boosts: {atk: 2}};
+			}
+			if (move.id === 'hypervoice' && name === 'sonarflare') {
+				move.name = 'Sonarflared M8';
+				move.basePower = 110;
+				move.secondary = {chance: 50, status: 'brn'};
+			}
+
+			if (move.id === 'slackoff' && name === 'umichbrendan') {
+				move.name = 'Play Video Games';
+				move.boosts = {def: 1, spd: 1, spa: 1, atk: -1, spe: -1};
+				move.onHit = function (target, pokemon) {
+					var videogames = ['Civilization', 'GTA', 'Pokemon BW2', 'Pokemon XY', 'Pokemon Emerald', 'PKMN HAXX', 'Madden'];
+					this.add('-message', '+UmichBrendan just played ' + videogames[this.random(7)]);
+					pokemon.cureStatus();
+				};
+			}
+			if (move.id === 'closecombat' && name === 'kurohebi12') {
+				move.name = 'Death Power';
+				move.self.boosts = {atk: 6, spe: -6, def: -1, spd: -1, evasion: -1};
 			}
 		}
 	},
