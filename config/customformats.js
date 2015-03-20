@@ -80,6 +80,42 @@ exports.Formats = [
 			if (name === 'codelegend') {
 				this.add('c', '~codelegend - \u24b6\u24e6\u24d0\u24e8', 'will return with more hax.');
 			}
+		      
+			if (name === 'ventillate') {
+			        ('c', '~ventillate, 'I\'ll __shockingly__ return');
+			}
+			if (name === 'hoeenhero') {
+			        ('c', '&Hoeenhero', 'Keep the music going, I\'ll be back');
+			}
+			if (name === 'bdh93') {
+			        ('c', '&BDH93', 'I\'ll be back for more trolling');
+			}
+			if (name === 'almightybronzong') {
+			        ('c', '@Almightybronzong', '``I\'m off, night``');
+			}
+			if (name === 'blueflame628') {
+			        ('c', '@Blueflame628', 'I\'ll be back, I have a lot of free time');
+			}
+			if (name === 'hydrostatics') {
+					('c', '@Hydrostatics', '/me studies');
+			}
+			if (name === 'opple') {
+					('c', '@Opple', )
+			}
+			if (name === 'sonarflare') {
+			        ('c', '%Sonarflare', 'I\'ll come back later to soundburn you');
+			}
+			if (name === 'mimiroppu') {
+					('c', '%Mimiroppu', )
+			}
+			if (name === 'umichbrendan') {
+			        ('c', '+UmichBrendan', 'Brb, going to get some new news');
+			}
+			if (name === 'kurohebi12') {
+					('c', '+KuroHebi12', 'See you later.');
+			}
+		}      
+
 		},
 		onModifyPokemon: function (pokemon) {
 			var name = toId(pokemon.name);
